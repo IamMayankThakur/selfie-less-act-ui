@@ -1,5 +1,5 @@
 var app = angular.module('myApp', []);
-var ip = "http://localhost:5000"
+var ip = "http://localhost:8000"
 
 app.controller('testController', function ($scope, $http) {
   // $scope.home = "This is the homepage";
@@ -63,7 +63,8 @@ app.controller('testController', function ($scope, $http) {
       
       $http.get(ip + "/api/v1/categories/")
         .then(function successCallback(response) {
-          // $scope.home1 = response.data
+          //  $scope.home1 = response.data
+          
           $scope.categories = response.data
         }, function errorCallback(response) {
           console.log("Unable to perform get request");
@@ -72,7 +73,7 @@ app.controller('testController', function ($scope, $http) {
 
     $scope.listacts = function () {
       $scope.acts_in_category = "acts in category:"
-      var text = this
+      var text = $(this).text()
       console.log("hello")
       alert(text)
       console.log(text)
