@@ -15,22 +15,25 @@
 			{{home}}
 			{{home1}}
 			
-			<button ng-click="getRequest()">Total Categories</button>
+			<button ng-click="getRequest()"   class="btn btn-info btn-lg">Total Categories</button>
 			<div ng-repeat="(key,value) in records">
 				<td>{{key+ ":"}}</td>
 				<td>{{value}}</td>
 			</div>
+			<br></br>
 			<input type="text" ng-model="addcategory">
-			<button ng-click="AddCategory()">Add Category</button>
+			<button ng-click="AddCategory()"  class = "btn btn-success">Add Category</button>
 			<input type="text" ng-model="deletecategory">
-			<button ng-click="removeCategory()">Remove Category</button>
+			<button ng-click="removeCategory()"  class = "btn btn-success"">Remove Category</button>
 
 
 
 			<h1>{{heading_categories}}</h1>
 			<div ng-repeat="(key,value) in categories">
-				<button  ng-click="listacts()" id="hi" ng-model="listact">{{key}}</button>
+				<button type="button"  ng-click="listacts()" ng-model="listact"  class="btn btn-info btn-lg" >{{key}}</button>
+				<br></br>
 			</div>
+
 
 			<h2>{{acts_in_category}}</h2>
 
