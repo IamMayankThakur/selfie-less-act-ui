@@ -16,9 +16,9 @@
 			{{home1}}
 			
 			<button ng-click="getRequest()">Total Categories</button>
-			<div ng-repeat="x in records">
-				<td>{{x.category+ ":"}}</td>
-				<td>{{x.total}}</td>
+			<div ng-repeat="(key,value) in records">
+				<td>{{key+ ":"}}</td>
+				<td>{{value}}</td>
 			</div>
 			<input type="text" ng-model="addcategory">
 			<button ng-click="AddCategory()">Add Category</button>
@@ -28,8 +28,8 @@
 
 
 			<h1>{{heading_categories}}</h1>
-			<div ng-repeat="x in categories">
-				<button  ng-click="listacts()" id="hi" ng-model="listact">{{x.category}}</button>
+			<div ng-repeat="(key,value) in categories">
+				<button  ng-click="listacts()" id="hi" ng-model="listact">{{key}}</button>
 			</div>
 
 			<h2>{{acts_in_category}}</h2>

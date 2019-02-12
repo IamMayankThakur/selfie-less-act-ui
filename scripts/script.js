@@ -48,7 +48,7 @@ app.controller('testController', function ($scope, $http) {
         arr1.push(text);
         console.log(arr1)
 
-        $http.delete(ip+"/api/v1/categories/",arr1)
+        $http.delete(ip+"/api/v1/categories/"+text+'/')
         .then(function success(){
          alert("category deleted");
          $scope.deletecategory=""
@@ -73,7 +73,7 @@ app.controller('testController', function ($scope, $http) {
 
     $scope.listacts = function () {
       $scope.acts_in_category = "acts in category:"
-      var text = $(this).text()
+      var text = $(this).id()
       console.log("hello")
       alert(text)
       console.log(text)
