@@ -20,26 +20,43 @@
 				<td>{{x.category+ ":"}}</td>
 				<td>{{x.total}}</td>
 			</div>
-			<input type="text" ng-model="category">
+			<input type="text" ng-model="addcategory">
 			<button ng-click="AddCategory()">Add Category</button>
+			<input type="text" ng-model="deletecategory">
+			<button ng-click="removeCategory()">Remove Category</button>
+
+
 
 			<h1>{{heading_categories}}</h1>
 			<div ng-repeat="x in categories">
-				<button ng-click="listacts()" ng-model="listact">{{x.category}}</button>
+				<button  ng-click="listacts()" ng-model="listact">{{x.category}}</button>
 			</div>
 
 			<h2>{{acts_in_category}}</h2>
-			<div ng-repeat="i in items" ng-model="total_acts">
-					<td>{{i.actId+ ":"}}</td>
-					<td>{{i.username}}</td>
-				<!-- <table>
-					<tr>
-						<td>{{i.actId}}</td>
-					</tr>
-				</table> -->
-			</div> 
 
-		</div>
+			<table class="table" >
+					<tr>
+							<th>Act Id</th>
+							<th>USerName</th>
+							<th>timestamp</th>
+							<th>caption</th>
+							<th>upvotes</th>
+						</tr>
+				<tbody ng-repeat="x in items">
+					<tr>
+						<td>{{x.actId+ ":"}}</td>
+						<td>{{x.username}}</td>
+						<td>{{x.timestamp}}</td>
+						<td>{{x.caption}}</td>
+						<td>{{x.upvotes}}</td>
+						<td>{{x.imgb64}}</td>
+
+					</tr>
+				</tbody>
+			</table>
+			
+
+		
 	</body>
 
 </html>
