@@ -72,7 +72,9 @@ app.controller('testController', function ($scope, $http) {
 
     $scope.listacts = function () {
       $scope.acts_in_category = "acts in category:"
-      var text = this.innerHTML
+      var text = this
+      console.log("hello")
+      alert(text)
       console.log(text)
       $http.get(ip + "/api/v1/categories/"+ text + "/acts/")
         .then(function successCallback(response) {
