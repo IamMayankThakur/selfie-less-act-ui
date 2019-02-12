@@ -9,32 +9,33 @@
 		<script src="scripts/script.js"></script>
 	</head>
 
-	<body ng-app="myApp" >
+	<body ng-app="myApp" class="container">
 		{{myWelcome}}
-		<div ng-controller="testController" data-ng-init="init()">
+		<div ng-controller="testController" data-ng-init="init()" class="container">
 			{{home}}
 			{{home1}}
 			
-			<button ng-click="getRequest()">Total Categories</button>
+			<button ng-click="getRequest()" class="btn btn-primary">Total Categories</button>
 			<div ng-repeat="(key,value) in records">
 				<td>{{key+ ":"}}</td>
 				<td>{{value}}</td>
 			</div>
-			<input type="text" ng-model="addcategory">
-			<button ng-click="AddCategory()">Add Category</button>
-			<input type="text" ng-model="deletecategory">
-			<button ng-click="removeCategory()">Remove Category</button>
-
+			<div class="form-group">
+			<input type="text" ng-model="addcategory" class="form-control">
+			<button ng-click="AddCategory()" class="btn btn-success">Add Category</button>
+			<input type="text" ng-model="deletecategory" class="form-control">
+			<button ng-click="removeCategory()" class="btn btn-danger">Remove Category</button>
+				</div>
 
 
 			<h1>{{heading_categories}}</h1>
 			<div ng-repeat="(key,value) in categories">
-				<button  ng-click="listacts()" id="hi" ng-model="listact">{{key}}</button>
+				<button  ng-click="listacts()" id="hi" ng-model="listact" class="btn btn-primary">{{key}}</button>
 			</div>
 
 			<h2>{{acts_in_category}}</h2>
-
-			<table class="table" >
+			<div class="table-responsive">
+			<table class="table table-bordered table-hover" >
 					<tr>
 							<th>Act Id</th>
 							<th>USerName</th>
@@ -54,7 +55,7 @@
 					</tr>
 				</tbody>
 			</table>
-			
+			</div>
 
 		
 	</body>
