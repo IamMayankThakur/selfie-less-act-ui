@@ -9,11 +9,36 @@
 		<script src="scripts/script.js"></script>
 	</head>
 
-	<body ng-app="myApp">
+	<body ng-app="myApp" >
 		{{myWelcome}}
-		<div ng-controller="testController">
+		<div ng-controller="testController" data-ng-init="init()">
 			{{home}}
-			<button ng-click="getRequest()">Add Category</button>
+			{{home1}}
+			
+			<button ng-click="getRequest()">Total Categories</button>
+			<div ng-repeat="x in records">
+				<td>{{x.category+ ":"}}</td>
+				<td>{{x.total}}</td>
+			</div>
+			<input type="text" ng-model="category">
+			<button ng-click="AddCategory()">Add Category</button>
+
+			<h1>{{heading_categories}}</h1>
+			<div ng-repeat="x in categories">
+				<button ng-click="listacts()" ng-model="listact">{{x.category}}</button>
+			</div>
+
+			<h2>{{acts_in_category}}</h2>
+			<div ng-repeat="i in items" ng-model="total_acts">
+					<td>{{i.actId+ ":"}}</td>
+					<td>{{i.username}}</td>
+				<!-- <table>
+					<tr>
+						<td>{{i.actId}}</td>
+					</tr>
+				</table> -->
+			</div> 
+
 		</div>
 	</body>
 
