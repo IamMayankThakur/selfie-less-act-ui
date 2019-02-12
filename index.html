@@ -9,9 +9,9 @@
 		<script src="scripts/script.js"></script>
 	</head>
 
-	<body ng-app="myApp" >
+	<body ng-app="myApp" class="container">
 		{{myWelcome}}
-		<div ng-controller="testController" data-ng-init="init()">
+		<div ng-controller="testController" data-ng-init="init()" class="container">
 			{{home}}
 			{{home1}}
 			
@@ -20,12 +20,12 @@
 				<td>{{key+ ":"}}</td>
 				<td>{{value}}</td>
 			</div>
-			<br></br>
-			<input type="text" ng-model="addcategory">
-			<button ng-click="AddCategory()"  class = "btn btn-success">Add Category</button>
-			<input type="text" ng-model="deletecategory">
-			<button ng-click="removeCategory()"  class = "btn btn-success"">Remove Category</button>
-
+			<div class="form-group">
+			<input type="text" ng-model="addcategory" class="form-control">
+			<button ng-click="AddCategory()" class="btn btn-success">Add Category</button>
+			<input type="text" ng-model="deletecategory" class="form-control">
+			<button ng-click="removeCategory()" class="btn btn-danger">Remove Category</button>
+				</div>
 
 
 			<h1>{{heading_categories}}</h1>
@@ -36,8 +36,8 @@
 
 
 			<h2>{{acts_in_category}}</h2>
-
-			<table class="table" >
+			<div class="table-responsive">
+			<table class="table table-bordered table-hover" >
 					<tr>
 							<th>Act Id</th>
 							<th>USerName</th>
@@ -57,7 +57,7 @@
 					</tr>
 				</tbody>
 			</table>
-			
+			</div>
 
 		
 	</body>
