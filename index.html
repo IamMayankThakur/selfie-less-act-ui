@@ -9,12 +9,55 @@
 		<script src="scripts/script.js"></script>
 	</head>
 
-	<body ng-app="myApp">
+	<body ng-app="myApp" class="container">
 		{{myWelcome}}
-		<div ng-controller="testController">
+		<div ng-controller="testController" data-ng-init="init()" class="container">
 			{{home}}
-			<button ng-click="getRequest()">Add Category</button>
-		</div>
+			{{home1}}
+			
+			<button ng-click="getRequest()" class="btn btn-primary">Total Categories</button>
+			<div ng-repeat="(key,value) in records">
+				<td>{{key+ ":"}}</td>
+				<td>{{value}}</td>
+			</div>
+			<div class="form-group">
+			<input type="text" ng-model="addcategory" class="form-control">
+			<button ng-click="AddCategory()" class="btn btn-success">Add Category</button>
+			<input type="text" ng-model="deletecategory" class="form-control">
+			<button ng-click="removeCategory()" class="btn btn-danger">Remove Category</button>
+				</div>
+
+
+			<h1>{{heading_categories}}</h1>
+			<div ng-repeat="(key,value) in categories">
+				<button  ng-click="listacts()" id="hi" ng-model="listact" class="btn btn-primary">{{key}}</button>
+			</div>
+
+			<h2>{{acts_in_category}}</h2>
+			<div class="table-responsive">
+			<table class="table table-bordered table-hover" >
+					<tr>
+							<th>Act Id</th>
+							<th>USerName</th>
+							<th>timestamp</th>
+							<th>caption</th>
+							<th>upvotes</th>
+						</tr>
+				<tbody ng-repeat="x in items">
+					<tr>
+						<td>{{x.actId+ ":"}}</td>
+						<td>{{x.username}}</td>
+						<td>{{x.timestamp}}</td>
+						<td>{{x.caption}}</td>
+						<td>{{x.upvotes}}</td>
+						<td>{{x.imgb64}}</td>
+
+					</tr>
+				</tbody>
+			</table>
+			</div>
+
+		
 	</body>
 
 </html>
