@@ -1,5 +1,6 @@
 var app = angular.module('myApp', []);
-var ip = "http://localhost:8000"
+var ip = "http://23.20.246.30"
+// var ip = "http://localhost:8000"
 
 app.controller('testController', function ($scope, $http) {
   // $scope.home = "This is the homepage";

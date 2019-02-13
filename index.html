@@ -44,6 +44,7 @@
 							<th>timestamp</th>
 							<th>caption</th>
 							<th>upvotes</th>
+							<th>Image</th>
 						</tr>
 				<tbody ng-repeat="x in items">
 					<tr>
@@ -52,7 +53,10 @@
 						<td>{{x.timestamp}}</td>
 						<td>{{x.caption}}</td>
 						<td>{{x.upvotes}}</td>
-						<td>{{x.imgb64}}</td>
+						<!-- <td>{{x.imgb64}}</td> -->
+						<td>
+						<img ng-src="{{x.imgb64}}" width="50" height="50"></img>
+						</td>
 
 					</tr>
 				</tbody>
