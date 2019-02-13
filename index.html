@@ -15,7 +15,7 @@
 			{{home}}
 			{{home1}}
 			
-			<button ng-click="getRequest()" class="btn btn-primary">Total Categories</button>
+			<button ng-click="getRequest()"   class="btn btn-info btn-lg">Total Categories</button>
 			<div ng-repeat="(key,value) in records">
 				<td>{{key+ ":"}}</td>
 				<td>{{value}}</td>
@@ -30,8 +30,10 @@
 
 			<h1>{{heading_categories}}</h1>
 			<div ng-repeat="(key,value) in categories">
-				<button  ng-click="listacts()" id="hi" ng-model="listact" class="btn btn-primary">{{key}}</button>
+				<button type="button"  ng-click="listacts()" ng-model="listact"  class="btn btn-info btn-lg" >{{key}}</button>
+				<br></br>
 			</div>
+
 
 			<h2>{{acts_in_category}}</h2>
 			<div class="table-responsive">
@@ -42,6 +44,7 @@
 							<th>timestamp</th>
 							<th>caption</th>
 							<th>upvotes</th>
+							<th>Image</th>
 						</tr>
 				<tbody ng-repeat="x in items">
 					<tr>
@@ -50,7 +53,10 @@
 						<td>{{x.timestamp}}</td>
 						<td>{{x.caption}}</td>
 						<td>{{x.upvotes}}</td>
-						<td>{{x.imgb64}}</td>
+						<!-- <td>{{x.imgb64}}</td> -->
+						<td>
+						<img ng-src="{{x.imgb64}}" width="50" height="50"></img>
+						</td>
 
 					</tr>
 				</tbody>

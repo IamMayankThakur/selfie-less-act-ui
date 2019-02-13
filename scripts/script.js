@@ -1,5 +1,6 @@
 var app = angular.module('myApp', []);
-var ip = "http://localhost:8000"
+var ip = "http://23.20.246.30"
+// var ip = "http://localhost:8000"
 
 app.controller('testController', function ($scope, $http) {
   // $scope.home = "This is the homepage";
@@ -73,20 +74,36 @@ app.controller('testController', function ($scope, $http) {
 
     $scope.listacts = function () {
       $scope.acts_in_category = "acts in category:"
-      var text = $(this).id()
-      console.log("hello")
-      alert(text)
-      console.log(text)
-      $http.get(ip + "/api/v1/categories/"+ text + "/acts")
+      var text = $(this).val("value")[0]
+      // for (key in text)
+      // {
+      //   if(key =="key")
+      //   {
+      //     console.log(key)
+      //   }
+      //    console.log(key)
+      // }
+      // for (let value of Object.values(text)) {
+        
+      //   console.log(value) // John, then 30
+      // }
+      for (const [key, value] of Object.entries(text)) {
+        if(key == "key"){
+          console.log(value)
+          var text2 = value
+          
+        }
+      }
+      
+      // console.log("hello")
+      // alert(text)
+      // console.log(text)
+      $http.get(ip + "/api/v1/categories/"+ text2 + "/acts")
         .then(function successCallback(response) {
           var resp = JSON.parse(response.data)
           console.log(resp)
           console.log(response.data)
-          // for(int i=0;i<resp.length;i++)
-          // {
 
-          // }
-          // $scope.home = response.data
           $scope.items = JSON.parse(response.data)
           
         }, function errorCallback(response) {
