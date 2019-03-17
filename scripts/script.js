@@ -1,6 +1,7 @@
 var app = angular.module('myApp', []);
-var ip = "http://23.20.246.30"
-// var ip = "http://localhost:8000"
+// var ip = "http://23.20.246.30"
+var ip = "http://localhost:8000"
+
 
 app.controller('testController', function ($scope, $http) {
   // $scope.home = "This is the homepage";
@@ -36,6 +37,88 @@ app.controller('testController', function ($scope, $http) {
         });
       }
     };
+
+
+    $scope.UploadAct = function(){
+      console.log("hello")
+      var actid = $scope.actid
+      var username = $scope.username
+      var caption = $scope.caption
+      var imgb64 = $scope.imgupload
+      var category = $scope.category
+      console.log(actid)
+      console.log(imgb64)
+
+      if(actid==null || username == null || caption==null){
+        alert("No data")
+        return console.log("no")
+      }
+      else{
+        var date = new Date();
+        var timestamp = date.getTime();
+        var imgB64 = "TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvb"
+        var JSONobj ={}
+        JSONobj["actId"] = actid
+        JSONobj["username"] = username
+        JSONobj["caption"] = caption
+        JSONobj["categoryName"] = category
+        JSONobj["imgB64"] = imgB64
+
+        $http.post(ip+"/api/v1/acts",JSONobj)
+        .then(function success(){
+         alert("category added");
+         $scope.actid=""
+         $scope.username=""
+         $scope.caption = ""
+         $scope.imgb64 =""
+         $scope.category=""
+        },function errorCallback(response){
+          console.log("Unable to perform get request");
+        });
+      }
+    };
+
+    $scope.UpvoteAct = function(){
+      
+      var text = $(this).val("value")[0]
+
+      // console.log(text)
+      for (const [key, value] of Object.entries(text)) {
+        if(key == "x")
+        {
+          console.log(value)
+          var text2 = value
+          for (var key2 in text2)
+           {
+            if (key2 == "actId") 
+            {
+              var val = text2[key2];
+              console.log(val);
+            }
+            if(key2=="upvotes")
+            {
+              var val2 = text2[key2]
+              console.log(val2)
+            }
+          }
+        }
+      }
+
+      var arr1 = new Array()
+      arr1.push(val)
+      console.log(arr1)
+      console.log($scope.upvotebutton)
+      $scope.upvotebutton = val2 + 1
+      $http.post(ip+"/api/v1/acts/upvote",arr1)
+      .then(function success(){
+      
+  
+      },function errorCallback(response){
+        console.log("Unable to perform get request");
+      });
+    
+  };
+
 
     $scope.removeCategory = function(){
       var text = $scope.deletecategory
@@ -75,18 +158,7 @@ app.controller('testController', function ($scope, $http) {
     $scope.listacts = function () {
       $scope.acts_in_category = "acts in category:"
       var text = $(this).val("value")[0]
-      // for (key in text)
-      // {
-      //   if(key =="key")
-      //   {
-      //     console.log(key)
-      //   }
-      //    console.log(key)
-      // }
-      // for (let value of Object.values(text)) {
-        
-      //   console.log(value) // John, then 30
-      // }
+ 
       for (const [key, value] of Object.entries(text)) {
         if(key == "key"){
           console.log(value)
@@ -103,6 +175,10 @@ app.controller('testController', function ($scope, $http) {
           var resp = JSON.parse(response.data)
           console.log(resp)
           console.log(response.data)
+          if(response.data ==null)
+          {
+            $scope.items=""
+          }
 
           $scope.items = JSON.parse(response.data)
           
