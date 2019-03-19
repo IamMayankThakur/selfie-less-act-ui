@@ -8,6 +8,7 @@
 		 crossorigin="anonymous">
 		 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
 		 <script type="text/javascript" src="https://cdn.rawgit.com/adonespitogo/angular-base64-upload/master/src/angular-base64-upload.js"></script>
+		 <script type="text/javascript" src="scripts/angular-base64-upload.js"></script>
 		<script src="scripts/script.js"></script>
 		
 	</head>
@@ -69,17 +70,20 @@
 			<h2>Upload act</h2>
 			<div class="form-group2">
 				<h3>actid</h3>
-				<input type="text" ng-model="actid" class="form-control">
+				<input type="number" ng-model="actid" class="form-control">
 				<h3>username</h3>
 				<input type="text" ng-model="username" class="form-control">
 				<h3>caption</h3>
 				<input type="text" ng-model="caption" class="form-control">
 				<h3>category</h3>
 				<input type="text" ng-model="category" class="form-control">
-				<input type="file" ng-model="imgupload" class="form-control" base-sixty-four-input  maxsize="500" accept="image/*"> 
-				<button ng-click="UploadAct()">Upload</button>
+				<br>
+				<input type="file" ng-model="imgupload" class="form-control" base-sixty-four-input  maxsize="500" accept="image/*" class="btn btn-info btn-lg">
+				<br>
+				<button ng-click="UploadAct()" class="btn btn-success">Upload</button>
 					</div>
-	
+			<!-- <button ng-click="image()">image</button>
+			<img id=imageid src=https://www.google.de/images/srpr/logo11w.png> -->
 		
 	</body>
 

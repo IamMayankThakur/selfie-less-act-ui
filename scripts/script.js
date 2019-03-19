@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp',  ['naif.base64']);
 // var ip = "http://23.20.246.30"
 var ip = "http://localhost:8000"
 
@@ -45,9 +45,17 @@ app.controller('testController', function ($scope, $http) {
       var username = $scope.username
       var caption = $scope.caption
       var imgb64 = $scope.imgupload
+      alert(imgb64)
       var category = $scope.category
       console.log(actid)
       console.log(imgb64)
+      for (const [key, value] of Object.entries(imgb64))
+      {
+        if(key=="base64")
+        {
+          var value1 = value 
+        }
+      }
 
       if(actid==null || username == null || caption==null){
         alert("No data")
@@ -56,13 +64,15 @@ app.controller('testController', function ($scope, $http) {
       else{
         var date = new Date();
         var timestamp = date.getTime();
-        var imgB64 = "TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvb"
+        var imgB64 = value1
+        console.log(imgB64)
         var JSONobj ={}
         JSONobj["actId"] = actid
         JSONobj["username"] = username
         JSONobj["caption"] = caption
         JSONobj["categoryName"] = category
         JSONobj["imgB64"] = imgB64
+        console.log(JSONobj)
 
         $http.post(ip+"/api/v1/acts",JSONobj)
         .then(function success(){
@@ -109,8 +119,11 @@ app.controller('testController', function ($scope, $http) {
       console.log(arr1)
       console.log($scope.upvotebutton)
       $scope.upvotebutton = val2 + 1
+      location.reload();
+      alert("hhhelo");
       $http.post(ip+"/api/v1/acts/upvote",arr1)
       .then(function success(){
+        $scope.upvotebutton = val2 +1
       
   
       },function errorCallback(response){
@@ -177,7 +190,7 @@ app.controller('testController', function ($scope, $http) {
           console.log(response.data)
           if(response.data ==null)
           {
-            $scope.items=""
+            $scope.items=null
           }
 
           $scope.items = JSON.parse(response.data)
@@ -186,5 +199,26 @@ app.controller('testController', function ($scope, $http) {
           console.log("Unable to perform get request");
         });
     };
-  }
-);
+
+//     sudo apt install libssl1.0-dev
+// sudo apt install nodejs-dev
+// sudo apt install node-gyp
+// sudo apt install npm
+    // $scope.image = function(){
+    //   alert("hhelo")
+    //   var canvas = document.createElement("canvas");
+    //   canvas.width = img.width;
+    //   canvas.height = img.height;
+    //   var ctx = canvas.getContext("2d");
+    //   ctx.drawImage(img, 0, 0);
+    //   alert("hello")
+    //   var dataURL = canvas.toDataURL("image/png");
+    //   alert(dataURL)
+
+    //   return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+      
+    //     },function errorCallback(response){
+    //       console.log("Unable to perform get request");
+    //     };
+      }
+) 
