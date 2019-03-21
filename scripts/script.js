@@ -63,7 +63,15 @@ app.controller('testController', function ($scope, $http) {
       }
       else{
         var date = new Date();
-        var timestamp = date.getTime();
+        var day = date.getDay();
+        var month = date.getMonth();
+        var year = date.getFullYear();
+        var seconds = date.getSeconds();
+        var minutes = date.getMinutes();
+        var hours = date.getHours();
+        var res = day+'-'+month+'-'+year+':'+seconds+'-'+minutes+'-'+hours
+        console.log(res)
+
         var imgB64 = value1
         console.log(imgB64)
         var JSONobj ={}
@@ -72,11 +80,12 @@ app.controller('testController', function ($scope, $http) {
         JSONobj["caption"] = caption
         JSONobj["categoryName"] = category
         JSONobj["imgB64"] = imgB64
+        JSONobj["timestamp"]=res
         console.log(JSONobj)
 
         $http.post(ip+"/api/v1/acts",JSONobj)
         .then(function success(){
-         alert("category added");
+         alert("uploaded");
          $scope.actid=""
          $scope.username=""
          $scope.caption = ""
